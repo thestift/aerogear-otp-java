@@ -23,7 +23,7 @@
 
   <groupId>com.github.thestift</groupId>
   <artifactId>aerogear-otp-java-fork</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2-RELEASE</version>
   <packaging>jar</packaging>
 
   <name>aerogear-otp-java-fork</name>
