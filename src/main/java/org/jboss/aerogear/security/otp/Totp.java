@@ -32,7 +32,7 @@ public class Totp {
 
     private final String secret;
     private final Clock clock;
-    private static final int DELAY_WINDOW = 1;
+    private static final int TIMED_WINDOW = 2;
 
     /**
      * Initialize an OTP instance with the shared secret generated on Registration process
@@ -99,9 +99,10 @@ public class Totp {
         long code = Long.parseLong(otp);
         long currentInterval = clock.getCurrentInterval();
 
-        int pastResponse = Math.max(DELAY_WINDOW, 0);
+        int pastResponse = DELAY_WINDOW * -1;
+        int forwardTime = DELAY_WINDOW;
 
-        for (int i = pastResponse; i >= 0; --i) {
+        for (int i = pastResponse; i <= DELAY_WINDOW; i++) {
             int candidate = generate(this.secret, currentInterval - i);
             if (candidate == code) {
                 return true;
