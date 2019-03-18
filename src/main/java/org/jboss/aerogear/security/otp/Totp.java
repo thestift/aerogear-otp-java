@@ -99,10 +99,7 @@ public class Totp {
         long code = Long.parseLong(otp);
         long currentInterval = clock.getCurrentInterval();
 
-        int pastResponse = DELAY_WINDOW * -1;
-        int forwardTime = DELAY_WINDOW;
-
-        for (int i = pastResponse; i <= DELAY_WINDOW; i++) {
+        for (int i = TIMED_WINDOW * -1; i <= TIMED_WINDOW; i++) {
             int candidate = generate(this.secret, currentInterval - i);
             if (candidate == code) {
                 return true;
